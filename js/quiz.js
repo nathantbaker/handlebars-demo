@@ -5,6 +5,10 @@ let carInventory = require('./carLot'),
     Handlebars = require('hbsfy/runtime'),
     carTemplate = require('../templates/car-grid.hbs');
 
+Handlebars.registerPartial("navbar", require('../templates/partials/nav-bar.hbs'));
+
+Handlebars.registerHelper("increment", value => parseInt(value) + 1);
+
 function populatePage (inventory) {
   // Grab the div we want to apppend the cards to
   let cards = document.getElementById("inventory-cards");
@@ -26,3 +30,4 @@ carInventory.loadInventory()
   function (reason) {
     console.error('Something went wrong', reason);
   });
+
